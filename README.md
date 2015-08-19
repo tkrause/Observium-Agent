@@ -6,13 +6,15 @@ To run the script from GitHub create file in your current directory named agent.
 
 `sudo wget https://raw.githubusercontent.com/tkrause/Observium-Agent/master/agent.conf.sh`
 
-This file will then need to be edited to fit your configuration.
+Now download and run the setup script
+
+`sudo wget https://raw.githubusercontent.com/tkrause/Observium-Agent/master/observium-agent-install.sh`
+
+Note: You will need to edit agent.conf.sh to fit your configuration.
 
 `sudo chmod +x agent.conf.sh`
 
-Now download and run the setup script
-
-`curl https://raw.githubusercontent.com/tkrause/Observium-Agent/master/observium-agent-install.sh | sudo bash`
+`sudo chmod +x observium-agent-install.sh`
 
 ### Agent Conf Options
 `$SYSCONTACT` This option should be set to an email address in the format `Person Name <email@example.com>`.
