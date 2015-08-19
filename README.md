@@ -12,9 +12,7 @@ Now download and run the setup script
 
 Note: You will need to edit agent.conf.sh to fit your configuration.
 
-`sudo chmod +x agent.conf.sh`
-
-`sudo chmod +x observium-agent-install.sh`
+`sudo chmod +x agent.conf.sh observium-agent-install.sh`
 
 ### Agent Conf Options
 `$SYSCONTACT` This option should be set to an email address in the format `Person Name <email@example.com>`.
