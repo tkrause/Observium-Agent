@@ -12,7 +12,7 @@ This file will then need to be edited to fit your configuration.
 
 Now download and run the setup script
 
-`curl https://github.com/tkrause/Observium-Agent/observium-agent-install.sh | sh`
+`curl https://raw.githubusercontent.com/tkrause/Observium-Agent/master/observium-agent-install.sh | sh`
 
 ### Agent Conf Options
 `$SYSCONTACT` This option should be set to an email address in the format `Person Name <email@example.com>`.
