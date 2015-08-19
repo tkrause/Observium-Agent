@@ -4,7 +4,7 @@ This is an install script for both the Enterprise and Community Editions which w
 ### Installation
 To run the script from GitHub create file in your current directory named agent.conf.sh with executable permissions.
 
-`wget https://github.com/tkrause/Observium-Agent/agent.conf.sh`
+`wget https://raw.githubusercontent.com/tkrause/Observium-Agent/master/agent.conf.sh`
 
 This file will then need to be edited to fit your configuration.
 
