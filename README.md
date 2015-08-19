@@ -16,7 +16,7 @@ Note: You will need to edit agent.conf.sh to fit your configuration.
 
 Run the installer
 
-`./observium-agent-install.sh`
+`sudo ./observium-agent-install.sh`
 
 ### Agent Conf Options
 `$SYSCONTACT` This option should be set to an email address in the format `Person Name <email@example.com>`.
@@ -32,3 +32,8 @@ Run the installer
 `$SVN_USER` (optional) Set to the username provided by Observium when you purchased your Enterprise License. Excluding this option from the config will result in using the Community Edition. 
 
 `$SVN_PASS` (optional) Set to the password provided by Observium when you purchased your Enterprise License. Excluding this from the config will result in using the Community Edition. 
+
+### FAQ
+1. I'm prompted "Attention! Your password for authentication realm:" what do I do?
+
+You can safely say "no" to allow it to encrypt your SVN password for future use.
