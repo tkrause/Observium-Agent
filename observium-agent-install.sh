@@ -34,8 +34,6 @@ if [ -z "$SVN_USER" ] || [ -z "$SVN_PASS" ]; then
         $ENTERPRISE = false
 fi
 
-
-# get packages
 if [ "$ENTERPRISE" = true ]; then
         echo "Installing Enterprise Agent..."
 		echo
@@ -75,9 +73,6 @@ syscontact $SYSCONTACT
 #This line allows Observium to detect the host OS if the distro script is installed
 extend .1.3.6.1.4.1.2021.7890.1 distro /usr/bin/distro
 EOL
-
-#cp observium/scripts/observium_agent_xinetd /etc/xinetd.d/observium_agent
-#nano /etc/xinetd.d/observium_agent
 
 cat >/etc/xinetd.d/observium_agent <<EOL
 service observium_agent
