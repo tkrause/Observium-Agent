@@ -23,7 +23,7 @@ Now download and run the setup script
 
 `$OBSERVIUM_HOST` Set to the IP Address or Hostname of your Observium Server. This will be used to limit connection to be only from this host.
 
-`$MODULES` (optional, array) Set to a space delimited list of modules you would like to install. These are simply the file names from `observium/scripts/agent-local/`. Excluding this option from the config will result in no extra modules being installed.
+`$MODULES` (optional, array) Set to a space delimited list of modules you would like to install. These are simply the file names from `observium/scripts/agent-local/`. Excluding this option from the config will result in no extra modules being installed. A list is provided in agent.conf.sh however you can retrieve an updated list by running `ls -l /opt/observium/scripts/agent-local/ | tr -s ' ' | cut -d ' ' -f9` on your Observium Server
 
 `$SVN_USER` (optional) Set to the username provided by Observium when you purchased your Enterprise License. Excluding this option from the config will result in using the Community Edition. 
 
