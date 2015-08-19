@@ -104,7 +104,7 @@ mkdir -p /usr/lib/observium_agent/local
 if [ -z "$MODULES" ] || [ ${#MODULES[@]} -eq 0 ]; then
         echo "No modules specified skipping..."
 else
-        for mod in $MODULES; do
+        for mod in ${MODULES[@]}; do
                 cp observium/scripts/agent-local/$mod /usr/lib/observium_agent/local/
         done
 fi
