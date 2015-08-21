@@ -8,11 +8,11 @@ To run the script from GitHub create file in your current directory named agent.
 
 Now download and run the setup script
 
-Debian:
+**Debian:**
 
 `sudo wget https://raw.githubusercontent.com/tkrause/Observium-Agent/master/observium-agent-install.sh`
 
-Redhat:
+**Redhat:**
 
 `sudo wget https://raw.githubusercontent.com/tkrause/Observium-Agent/master/observium-agent-redhat-install.sh -O observium-agent-install.sh`
 
