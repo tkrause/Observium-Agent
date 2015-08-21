@@ -1,5 +1,5 @@
 # Observium-Agent
-This is an install script for both the Enterprise and Community Editions which will setup the Observium Agent with the provided configuration. Note that this script currently only works for Debian/Ubuntu based systems.
+This is an install script for both the Enterprise and Community Editions which will setup the Observium Agent with the provided configuration. Note that this script currently only works for Debian/Ubuntu and Redhat based systems.
 
 ### Installation
 To run the script from GitHub create file in your current directory named agent.conf.sh with executable permissions.
