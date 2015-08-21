@@ -2,6 +2,7 @@
 
 CONFIG="agent.conf.sh"
 ENTERPRISE=true
+PKG_MANAGERS=(apt-get zypper yum)
 
 if [ ! -f $CONFIG ]; then
         echo "agent.conf.sh not found or not readable"
@@ -9,6 +10,25 @@ if [ ! -f $CONFIG ]; then
 fi
 
 source $CONFIG
+
+# Which Distro are we running on...
+if [ -z "$PKG_MANAGERS" ] || [ ${#PKG_MANAGERS[@]} -eq 0 ]; then
+        echo "Error! No package managers specified"
+        exit 1
+else
+        for pkg in ${PKG_MANAGERS[@]}; do
+                TEST=`which $pkg`
+                if [ $? -eq 0 ]; then
+                	PKG_MAN=$pkg
+                	break
+                fi
+        done
+fi
+
+if [ -z "$PKG_MAN" ]; then
+	echo "No package manager found on this system!"
+	exit 1
+fi
 
 if [ -z "$SYSCONTACT" ]; then
         echo "No system contact specified"
@@ -37,11 +57,11 @@ fi
 if [ "$ENTERPRISE" = true ]; then
         echo "Installing Enterprise Agent..."
 		echo
-        apt-get install subversion snmpd xinetd
+        yum install subversion snmpd xinetd
 else
         echo "Installing Community Agent..."
 		echo
-        apt-get install snmpd xinetd
+        yum install snmpd xinetd
 fi
 
 cd /opt
@@ -55,7 +75,13 @@ else
         tar zxvf observium-community-latest.tar.gz
 fi
 
-sed -e "/SNMPDOPTS=/ s/^#*/SNMPDOPTS='-Lsd -Lf \/dev\/null -u snmp -p \/var\/run\/snmpd.pid'\n#/" -i /etc/default/snmpd
+if [ -f "/etc/defaults/snmpd" ]; then
+	sed -e "/SNMPDOPTS=/ s/^#*/SNMPDOPTS='-Lsd -Lf \/dev\/null -u snmp -p \/var\/run\/snmpd.pid'\n#/" -i /etc/default/snmpd
+fi
+
+if [ -f "/etc/sysconfig/snmpd.options" ]; then
+	sed -e "/SNMPDOPTS=/ s/^#*/SNMPDOPTS='-Lsd -Lf \/dev\/null -u snmp -p \/var\/run\/snmpd.pid'\n#/" -i /etc/sysconfig/snmpd.options
+fi
 
 mv /opt/observium/scripts/distro /usr/bin/distro
 chmod 755 /usr/bin/distro
@@ -84,15 +110,12 @@ service observium_agent
         wait           = no
         user           = root
         server         = /usr/bin/observium_agent
-
         # configure the IPv[4|6] address(es) of your Observium server here:
         only_from      = $OBSERVIUM_HOST
-
         # Don't be too verbose. Don't log every check. This might be
         # commented out for debugging. If this option is commented out
         # the default options will be used for this service.
         log_on_success =
-
         disable        = no
 }
 EOL
