@@ -57,11 +57,11 @@ fi
 if [ "$ENTERPRISE" = true ]; then
         echo "Installing Enterprise Agent..."
 		echo
-        $PKG_MAN install subversion net-snmpd snmpd xinetd
+        $PKG_MAN install subversion snmpd xinetd
 else
         echo "Installing Community Agent..."
 		echo
-        $PKG_MAN install net-snmpd snmpd xinetd
+        $PKG_MAN install snmpd xinetd
 fi
 
 cd /opt
